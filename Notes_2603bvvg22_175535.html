@@ -1,0 +1,88 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Shop</title>
+<style>
+body{margin:0;font-family:Arial;background:#f1f5f9}
+header{background:#0f172a;color:white;padding:15px;text-align:center}
+nav{display:flex;justify-content:space-around;background:#1e293b;padding:10px}
+nav a{color:white;text-decoration:none}
+.hero{padding:40px;text-align:center;background:linear-gradient(90deg,#22c55e,#16a34a);color:white}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;padding:20px}
+.card{background:white;padding:15px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+button{background:#22c55e;border:none;padding:10px;color:white;border-radius:8px;width:100%}
+.cart{position:fixed;bottom:10px;right:10px;background:#0f172a;color:white;padding:15px;border-radius:10px}
+footer{background:#0f172a;color:white;text-align:center;padding:10px;margin-top:20px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🛒 Elite Shop</h1>
+<p>Your Premium Online Store</p>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+<h2>🔥 Best Deals Today</h2>
+<p>Shop high-quality products at affordable prices</p>
+</div>
+
+<div id="products" class="products"></div>
+
+<div class="cart" id="cartBox">🛒 Cart: 0 items</div>
+
+<div id="about" style="padding:20px">
+<h2>About Us</h2>
+<p>We provide high-quality products with fast delivery and trusted service.</p>
+</div>
+
+<div id="contact" style="padding:20px">
+<h2>Contact</h2>
+<p>Phone: +251 XXX XXX XXX</p>
+<p>Email: your@email.com</p>
+</div>
+
+<footer>
+<p>© 2026 Elite Shop. All rights reserved.</p>
+</footer>
+
+<script>
+const products=[
+{name:"Shoes",price:20},
+{name:"Watch",price:50},
+{name:"Bag",price:30},
+{name:"Headphones",price:40}
+];
+
+let cart=[];
+
+function renderProducts(){
+ let container=document.getElementById("products");
+ container.innerHTML="";
+ products.forEach((p,i)=>{
+  container.innerHTML+=`
+  <div class="card">
+    <img src="https://via.placeholder.com/200">
+    <h3>${p.name}</h3>
+    <p>$${p.price}</p>
+    <button onclick="addToCart(${i})">Add to Cart</button>
+  </div>`;
+ });
+}
+
+function addToCart(i){
+ cart.push(products[i]);
+ document.getElementById("cartBox").innerText="🛒 Cart: "+cart.length+" items";
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
